@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  # TFTP: docker run -p 0.0.0.0:69:69/udp -v /var/tftpboot:/var/tftpboot -i -t pghalliday/tftp
+  mail:
+    image: "dovecot/dovecot:latest"
+    ports:
+      - "172.25.41.1:110:110" # POP3
+      - "172.25.41.2:25:25" # SMTP
+    configs:
+      - source: dovecot_config
+        target: /etc/dovecot/ # TODO
+  ftp:
+    image: "stilliard/pure-ftpd:latest"
+    ports:
+      - "172.24.41.3:21:21" # FTP
+      - "30000-30009:30000-30009"
+  dns1:
+    image: "TODO"
+    ports:
+      - "172.24.41.4:53:53" # DNS
+  dns2:
+    image: "TODO"
+    ports:
+      - "172.24.41.5:53:53" # DNS
+  web:
+    image: "TODO"
+    ports:
+      - "172.24.41.7:80:80" # HTTP
+      - "172.24.41.7:443:443" # HTTPS
+configs:
+  dovecot_config:
+    file: ./dovecot.conf
+volumes:
+  logvolume01: # TODO

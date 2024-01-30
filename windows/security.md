@@ -1,12 +1,15 @@
 # Windows Security
 
 ## Group Policy
+
 > Domains > [DOMAIN]
+
 - Groups that can have GPOs created for them
 
 - DG_Readiness_tool ?
 
 AD Users
+
 - PS> Get-ADUser -Filter {Enabled -eq $true -and PasswordNeverExpires -eq $true}
   - Other filters?
     - PS> Get-ADUser -Filter {Enabled -eq $true -and PasswordNeverExpires -eq $true} | Set-ADUser -PasswordNeverExpires $false
@@ -26,11 +29,11 @@ Roles & Features > DHCP | DNS
 ### Manage DNS
 
 Server Manager > Tools > DNS
-  - [Server] > Action > Properties > Forwarders; Forwarding servers
-    - [Server] > *; DNS records
+
+- [Server] > Action > Properties > Forwarders; Forwarding servers
+  - [Server] > \*; DNS records
 
 ## Windows Defender
-
 
 ## 2012 Updates
 
